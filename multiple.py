@@ -8,6 +8,7 @@ def getMultiple(list):
         for each in list:
             answer.append(findMultiple(each[0], each[1], each[2]))
         writeToFile(answer)
+        print("!! Success !!")
 
 
 getMultiple(readFile())

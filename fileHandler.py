@@ -16,6 +16,18 @@ def checkIfBigTarget(data):
             result = "ok"
         else:
             result = "ko"
+            break
+    return result
+
+
+def checkIfZero(data):
+    result = ""
+    for x in data:
+        if x[0] == 0 or x[1] == 0 or x[2] == 0:
+            result = "ko"
+            break
+        else:
+            result = "ok"
     return result
 
 
@@ -27,7 +39,10 @@ def readFile():
             newList.append(numbers)
     if inputHandler(newList) == "ok":
         if checkIfBigTarget(newList) == "ok":
-            return newList
+            if checkIfZero(newList) == "ok":
+                return newList
+            else:
+                print("no values can be zero")
         else:
             print(" All target should be bigger than divisibles")
     else:
