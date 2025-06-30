@@ -4,8 +4,18 @@ def inputHandler(data):
         if len(each) == 3:
             result = "ok"
         else:
-            result = "no"
+            result = "ko"
             break
+    return result
+
+
+def checkIfBigTarget(data):
+    result = ""
+    for x in data:
+        if x[0] < x[2] and x[1] < x[2]:
+            result = "ok"
+        else:
+            result = "ko"
     return result
 
 
@@ -16,7 +26,10 @@ def readFile():
             numbers = list(map(int, line.strip().split()))
             newList.append(numbers)
     if inputHandler(newList) == "ok":
-        return newList
+        if checkIfBigTarget(newList) == "ok":
+            return newList
+        else:
+            print(" All target should be bigger than divisibles")
     else:
         print("Input format incorrect ")
         return None
